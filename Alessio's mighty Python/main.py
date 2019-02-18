@@ -1,5 +1,19 @@
 import socket
 import time
+import threading
+
+clients = {}
+clientsLock = threading.Lock()
+
+
+def acceptThread(serverSocket):
+    while True:
+        new_client = serverSocket.accept()
+        print("Added Client")
+        clientsLock.acquire()
+        clients[new_client[0]] = 0
+        clientsLock.release()
+
 
 if __name__ == '__main__':
 
@@ -13,7 +27,7 @@ if __name__ == '__main__':
 
     # create the socket and bind it to this address
     mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    mySocket.bind(("127.0.0.1", 8222))
+    #mySocket.bind(("127.0.0.1", 8222))
     mySocket.listen(5)
 
 
