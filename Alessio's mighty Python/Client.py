@@ -1,7 +1,7 @@
 import socket
 import time
 
-#server side
+#Client Side
 
 # start of the application
 if __name__ == '__main__':
