@@ -1,8 +1,6 @@
 import socket
 import time
 
-#Client Side
-
 # start of the application
 if __name__ == '__main__':
 
@@ -48,12 +46,20 @@ if __name__ == '__main__':
         # when the server is connected to the client
         while isConnected == True:
             # check if the server has lost connection
-            try:
+           try:
+                key = raw_input('Enter Message: ')
+                mySocket.send(key.encode())
+                mySocket.recv(4096)
+
                 data = mySocket.recv(4096)
-                print(data.decode("utf-8"))
-            except:
+                print(data)
+
+
+
+           except:
                 isConnected = False
                 mySocket = False
                 print("Server Lost")
+                input()
 
 

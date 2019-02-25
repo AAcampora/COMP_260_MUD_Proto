@@ -28,14 +28,20 @@ if __name__ == '__main__':
     while True:
         lostclients = []
 
+
         clientsLock.acquire()
         for client in clients:
             try:
-                testString = str(clients[client]) + ":" + time.ctime()
-                clients[client] += 1
-                client.send(testString.encode())
+                data = client.recv(4096).decode()
 
-                print("Sending: " + testString)
+                user_input = data.split(' ')
+
+                user_input = [x for x in user_input if x != '']
+
+                if user_input[0].lower() == 'hi':
+
+                    stringToSend = "Hi :D how are you?"
+
 
             except socket.error:
                 lostclients.append(client)

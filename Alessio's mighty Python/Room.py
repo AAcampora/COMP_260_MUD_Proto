@@ -1,4 +1,4 @@
-# this class contains the definition for the rooms in the MUD
+
 
 # define the class
 

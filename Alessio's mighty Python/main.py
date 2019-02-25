@@ -6,6 +6,8 @@ clients = {}
 clientsLock = threading.Lock()
 
 
+
+
 def acceptThread(serverSocket):
     while True:
         new_client = serverSocket.accept()
